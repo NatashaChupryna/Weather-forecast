@@ -1,21 +1,23 @@
+import Notiflix from 'notiflix';
+
 const refs = {
   form: document.querySelector('.js_form'),
-  card : document.querySelector('.js_container')
+  card: document.querySelector('.js_container'),
 };
 
 // Event function
 refs.form.addEventListener('submit', onSearch);
 
 function onSearch(event) {
-    event.preventDefault();
-    const { searchQuery, days } = event.currentTarget.elements;
+  event.preventDefault();
+  const { searchQuery, days } = event.currentTarget.elements;
     if (!searchQuery.value) {
-        alert('Enter your city😉');
-        return
-    };
-    fetchForecast(searchQuery.value, days.value).then(data =>
-      markUp(data.forecast.forecastday)
-    );
+ Notiflix.Notify.failure('Enter your city😉');
+    return;
+  }
+  fetchForecast(searchQuery.value, days.value).then(data =>
+    markUp(data.forecast.forecastday)
+  );
 }
 
 // Fetch function
@@ -33,10 +35,10 @@ function fetchForecast(name, value) {
     .catch(error => console.log(error));
 }
 
-
 // Markap function
 function markUp(array) {
- const markUp =array.map(
+  const markUp = array
+    .map(
       item => `
       <li>
       <div class="weather_card">
@@ -56,6 +58,6 @@ function markUp(array) {
 
     `
     )
-        .join('');
-    refs.card.innerHTML = markUp;
+    .join('');
+  refs.card.innerHTML = markUp;
 }
