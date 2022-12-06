@@ -1,105 +1,122 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
-body{
-  width:100%;
-  height:100%;
-   margin:0;
-  padding:0;
-  background:black;
+body {
+  height: 100vh;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden;
+  filter: drop-shadow(0 0 10px white);
+  text-align: center;
 }
-.bubbels{
-  position:absolute;
-  z-index:0;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  top:0;
-  left:0;
+
+@function random_range($min, $max) {
+  $rand: random();
+  $random_range: $min + floor($rand * (($max - $min) + 1));
+  @return $random_range;
 }
-.bubble{
-  position:absolute;
-  bottom:0;
-  background:#f1f1f1;
-  border-radius:50%;
-  opacity:0.5;
-  animation: up 10s infinite ease-in;
-}
-.bubble:nth-child(1){
-  width:40px;
-  height:40px;
-  left:10%;
-  animation-duration:8s;
-}
-.bubble:nth-child(2){
-  width:20px;
-  height:20px;
-  left:20%;
-  animation-duration:5s;
-  animation-delay:1s;
-}
-.bubble:nth-child(3){
-  width:50px;
-  height:50px;
-  left:35%;
-  animation-duration:10s;
-  animation-delay:2s;
-}
-.bubble:nth-child(4){
-  width:80px;
-  height:80px;
-  left:50%;
-  animation-duration:7s;
-  animation-delay:0s;
-}
-.bubble:nth-child(5){
-  width:35px;
-  height:35px;
-  left:55%;
-  animation-duration:6s;
-  animation-delay:1s;
-}
-.bubble:nth-child(6){
-  width:45px;
-  height:45px;
-  left:65%;
-  animation-duration:8s;
-  animation-delay:3s;
-}
-.bubble:nth-child(7){
-  width:25px;
-  height:25px;
-  left:75%;
-  animation-duration:7s;
-  animation-delay:2s;
-}
-.bubble:nth-child(8){
-  width:80px;
-  height:80px;
-  left:80%;
-  animation-duration:6s;
-  animation-delay:1s;
-}
-.bubble:nth-child(9){
-  width:15px;
-  height:15px;
-  left:70%;
-  animation-duration:9s;
-  animation-delay:0s;
-}
-.bubble:nth-child(10){
-  width:50px;
-  height:50px;
-  left:85%;
-  animation-duration:5s;
-  animation-delay:3s;
-}
-@keyframes up{
-  0%{
-    bottom:-100px;
-    transform:translateX(0);
-  }76%{
-     transform:translateX(-210px);
-  }100%{
-    bottom:1000px;
-     transform:translateY(1000px);
+
+.snow {
+  $total: 200;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+
+  @for $i from 1 through $total {
+    $random-x: random(1000000) * 0.0001vw;
+    $random-offset: random_range(-100000, 100000) * 0.0001vw;
+    $random-x-end: $random-x + $random-offset;
+    $random-x-end-yoyo: $random-x + ($random-offset / 2);
+    $random-yoyo-time: random_range(30000, 80000) / 100000;
+    $random-yoyo-y: $random-yoyo-time * 100vh;
+    $random-scale: random(10000) * 0.0001;
+    $fall-duration: random_range(10, 30) * 1s;
+    $fall-delay: random(30) * -1s;
+
+    &:nth-child(#{$i}) {
+      opacity: random(10000) * 0.0001;
+      transform: translate($random-x, -10px) scale($random-scale);
+      animation: fall-#{$i} $fall-duration $fall-delay linear infinite;
+    }
+
+    @keyframes fall-#{$i} {
+      #{percentage($random-yoyo-time)} {
+        transform: translate($random-x-end, $random-yoyo-y) scale($random-scale);
+      }
+
+      to {
+        transform: translate($random-x-end-yoyo, 100vh) scale($random-scale);
+      }
+    }
   }
+}
+.title{
+    text-transform: uppercase;
+    color: white;
+    margin: 0;
+}
+.search_input{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    outline: transparent;
+}
+.btn{
+    border-radius: 100%;
+    border: none;
+    width: 37px;
+    height: 35px;
+    background: #1b2735;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(365%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.days_query{
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    top: 54%;
+    left: 40.5%;
+    align-items: center;
+    justify-content: center;
+}
+.weather_text{
+    color: white;
+    font-size: 18px;
+}
+.days{
+    display: flex;
+    gap: 10px;
+}
+.day_value{
+    width: 37px;
+    height: 35px;
+    color: #fff;
+    cursor: pointer;
+    background: #1b2735;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    outline: transparent;
+}
+ul{
+    display: flex;
+    gap: 30px;
+}
+li{
+    list-style: none;
+    width: 200px;
+    background: #65656c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
 }
