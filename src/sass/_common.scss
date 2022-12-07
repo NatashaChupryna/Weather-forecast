@@ -110,13 +110,12 @@ body {
   transform: translate(-24%, -50%);
   align-items: center;
   justify-content: center;
-@media screen and (min-width: 300px) and (max-width: 767px){
+  @media screen and (min-width: 300px) and (max-width: 767px) {
     flex-direction: column;
     margin-top: 25px;
     gap: 15px;
     left: 42%;
   }
-  
 }
 .weather_text {
   color: white;
@@ -125,7 +124,6 @@ body {
 .days {
   display: flex;
   gap: 10px;
-
 }
 .day_value {
   width: 40px;
@@ -138,38 +136,39 @@ body {
   align-items: center;
   display: flex;
   outline: transparent;
-    font-size: 14px;
+  font-size: 14px;
 }
 ul {
   flex-wrap: wrap;
   gap: 30px;
   margin-top: 30px;
+  margin: 0;
+  padding: 0;
   display: flex;
   position: absolute;
   top: 40%;
   left: 0;
-  margin: 0;
-  padding: 0;
   justify-content: center;
   align-items: center;
   text-align: center;
-    flex-direction: row;
-  @media screen and (min-width: 300px) and (max-width: 767px){
+  flex-direction: row;
+  @media screen and (min-width: 300px) and (max-width: 767px) {
     flex-wrap: nowrap;
     position: inherit;
+    flex-direction: column;
+    padding-top: 260px;
   }
 }
 li {
   list-style: none;
-  width: 100px;
+  width: 200px;
   background: #65656c;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
-   @media screen and (min-width: 767px) {
-    width: 200px;
+
+  @media screen and (min-width: 767px) {
     padding: 15px;
   }
 }
