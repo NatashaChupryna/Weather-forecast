@@ -3,7 +3,7 @@ body {
   font-family: 'Roboto', sans-serif;
   height: 100vh;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-  overflow: hidden;
+  // overflow: hidden;
   filter: drop-shadow(0 0 10px white);
   text-align: center;
 }
@@ -50,12 +50,16 @@ body {
     }
   }
 }
-
+.background{
+  width: 100%;
+  height: 100vh;
+}
 .container {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  padding-bottom: 50px;
 
   @media screen and (min-width: 300px) {
     max-width: 480px;
@@ -68,22 +72,35 @@ body {
     max-width: 1200px;
   }
 }
+.form{
+     position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
 .title {
   text-transform: uppercase;
   color: white;
   margin: 0;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
+  // position: absolute;
+  // top: 0;
+  // left: 50%;
+  // transform: translate(-50%, 0);
+  margin-top: 30px;
+ 
 }
 
 .search_input {
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, -15%);
-  width: 300px;
+  // position: absolute;
+  // top: 15%;
+  // left: 50%;
+  // transform: translate(-50%, -15%);
+  width: 285px;
   outline: transparent;
 }
 .btn {
@@ -94,7 +111,7 @@ body {
   background: #1b2735;
   position: absolute;
   top: 16.3%;
-  left: 50%;
+  left: 48%;
   transform: translate(365%, -50%);
   display: flex;
   align-items: center;
@@ -104,17 +121,17 @@ body {
 .days_query {
   display: flex;
   gap: 20px;
-  position: absolute;
-  top: 24%;
-  left: 46%;
-  transform: translate(-24%, -50%);
+  // position: absolute;
+  // top: 24%;
+  // left: 46%;
+  // transform: translate(-24%, -50%);
   align-items: center;
   justify-content: center;
   @media screen and (min-width: 300px) and (max-width: 767px) {
     flex-direction: column;
     margin-top: 25px;
     gap: 15px;
-    left: 42%;
+    left: 39%;
   }
 }
 .weather_text {

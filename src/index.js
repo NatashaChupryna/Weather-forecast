@@ -11,8 +11,8 @@ refs.form.addEventListener('submit', onSearch);
 function onSearch(event) {
   event.preventDefault();
   const { searchQuery, days } = event.currentTarget.elements;
-    if (!searchQuery.value) {
- Notiflix.Notify.failure('Enter your city😉');
+  if (!searchQuery.value) {
+    Notiflix.Notify.failure('Enter your city😉');
     return;
   }
   fetchForecast(searchQuery.value, days.value).then(data =>
@@ -24,15 +24,18 @@ function onSearch(event) {
 const BASE_URL = 'http://api.weatherapi.com/v1/forecast.json';
 const key = '3c3e2b1141b84cdab5f190418220512';
 
-function fetchForecast(name, value) {
-  return fetch(`${BASE_URL}?key=${key}&q=${name}&days=${value}`)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      return response.json();
-    })
-    .catch(error => console.log(error));
+async function fetchForecast(name, value) {
+  try {
+    const response = await fetch(
+      `${BASE_URL}?key=${key}&q=${name}&days=${value}`
+    );
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    return await response.json();
+  } catch (error) {
+    return Notiflix.Notify.failure('Sorry, can`t find this forecast🙁');
+  }
 }
 
 // Markap function
@@ -47,16 +50,14 @@ function markUp(array) {
           alt="${item.day.condition.text}"
           src="${item.day.condition.icon}"
         />
-        <p>${item.date} <span>${item.day.avgtemp_c}&#8451;</span></p>
+        <p>${item.date}</p>
         <div class="wtsRwe">
-          <div>Опади: ${item.day.daily_chance_of_rain}</div>
-          <div>Вітер: ${item.day.maxwind_kph} km/hour</span>
-          </div>
+         <p>Av.temperature :${item.day.avgtemp_c}&#8451;</p>
+          <p>Rainfall: ${item.day.daily_chance_of_rain}</p>
+          <p>Wind : ${item.day.maxwind_kph} km</p>
         </div>
       </div>
-      </li>
-
-    `
+      </li>`
     )
     .join('');
   refs.card.innerHTML = markUp;
