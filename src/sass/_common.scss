@@ -1,5 +1,6 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 body {
+  position: relative;
   font-family: 'Roboto', sans-serif;
   height: 100vh;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
@@ -50,9 +51,13 @@ body {
     }
   }
 }
-.background{
+.background {
   width: 100%;
   height: 100vh;
+  margin-left: -100px;
+   @media screen and (min-width: 300px) and (max-width: 767px){
+    margin-left: 0;
+   }
 }
 .container {
   padding-right: 15px;
@@ -73,8 +78,8 @@ body {
   }
 }
 .form{
-     position: absolute;
-    top: 10%;
+    position: absolute;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -87,19 +92,21 @@ body {
   text-transform: uppercase;
   color: white;
   margin: 0;
-  // position: absolute;
-  // top: 0;
-  // left: 50%;
-  // transform: translate(-50%, 0);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
   margin-top: 30px;
- 
+   @media screen and (min-width: 300px) and (max-width: 767px){
+       width: 360px;  
+  font-size: 24px;}
 }
 
 .search_input {
-  // position: absolute;
-  // top: 15%;
-  // left: 50%;
-  // transform: translate(-50%, -15%);
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -15%);
   width: 285px;
   outline: transparent;
 }
@@ -110,7 +117,7 @@ body {
   height: 35px;
   background: #1b2735;
   position: absolute;
-  top: 16.3%;
+  top: 16.5%;
   left: 48%;
   transform: translate(365%, -50%);
   display: flex;
@@ -121,10 +128,10 @@ body {
 .days_query {
   display: flex;
   gap: 20px;
-  // position: absolute;
-  // top: 24%;
-  // left: 46%;
-  // transform: translate(-24%, -50%);
+  position: absolute;
+  top: 24%;
+  left: 46%;
+  transform: translate(-24%, -50%);
   align-items: center;
   justify-content: center;
   @media screen and (min-width: 300px) and (max-width: 767px) {
@@ -169,12 +176,12 @@ ul {
   align-items: center;
   text-align: center;
   flex-direction: row;
-  @media screen and (min-width: 300px) and (max-width: 767px) {
-    flex-wrap: nowrap;
-    position: inherit;
-    flex-direction: column;
-    padding-top: 260px;
-  }
+  // @media screen and (min-width: 300px) and (max-width: 767px) {
+  //   flex-wrap: nowrap;
+  //   position: inherit;
+  //   flex-direction: column;
+  //   padding-top: 260px;
+  // }
 }
 li {
   list-style: none;
