@@ -8,7 +8,9 @@ body {
   filter: drop-shadow(0 0 10px white);
   text-align: center;
 }
-
+.background2{
+   background: radial-gradient(ellipse at top, #1b2735 0%, #090a0f 100%);
+}
 @function random_range($min, $max) {
   $rand: random();
   $random_range: $min + floor($rand * (($max - $min) + 1));
@@ -64,7 +66,7 @@ body {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  padding-bottom: 50px;
+
 
   @media screen and (min-width: 300px) {
     max-width: 480px;

@@ -52,8 +52,8 @@ function markUp(array) {
         />
         <p>${item.date}</p>
         <div class="wtsRwe">
-         <p>Av.temperature :${item.day.avgtemp_c}&#8451;</p>
-          <p>Rainfall: ${item.day.daily_chance_of_rain}</p>
+         <p>Temperature : ${item.day.avgtemp_c}&#8451;</p>
+          <p>Rainfall: ${item.day.daily_chance_of_rain}%</p>
           <p>Wind : ${item.day.maxwind_kph} km</p>
         </div>
       </div>
